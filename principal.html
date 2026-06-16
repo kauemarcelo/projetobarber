@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Eleve Studio</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+
+background:
+linear-gradient(
+rgba(0,0,0,.82),
+rgba(0,0,0,.88)
+),
+url('carol.jpeg');
+
+background-size:cover;
+
+background-position:center;
+
+background-repeat:no-repeat;
+
+background-attachment:fixed;
+
+color:#fff;
+
+}
+
+/* HEADER */
+
+header{
+
+position:sticky;
+
+top:0;
+
+background:rgba(5,5,5,.85);
+
+backdrop-filter:blur(10px);
+
+padding:18px 5%;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+border-bottom:1px solid rgba(255,255,255,.1);
+
+z-index:999;
+
+}
+
+.logo h1{
+
+font-size:38px;
+
+}
+
+.logo span{
+
+color:#00d9ff;
+
+}
+
+nav{
+
+display:flex;
+
+gap:35px;
+
+align-items:center;
+
+}
+
+nav a{
+
+text-decoration:none;
+
+color:#fff;
+
+font-weight:bold;
+
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:#00d9ff;
+
+}
+
+.btn{
+
+background:#00d9ff;
+
+color:#000;
+
+padding:12px 20px;
+
+border-radius:10px;
+
+text-decoration:none;
+
+font-weight:bold;
+
+transition:.3s;
+
+}
+
+.btn:hover{
+
+transform:translateY(-3px);
+
+box-shadow:0 0 20px rgba(0,217,255,.5);
+
+}
+
+/* HERO */
+
+.hero{
+
+min-height:85vh;
+
+display:flex;
+
+align-items:center;
+
+background:transparent;
+
+}
+
+.hero-content{
+
+padding:0 10%;
+
+}
+
+.hero h2{
+
+color:#00d9ff;
+
+}
+
+.hero h1{
+
+font-size:72px;
+
+}
+
+.hero p{
+
+font-size:20px;
+
+margin:25px 0;
+
+}
+
+/* SEÇÕES */
+
+section{
+
+padding:90px 10%;
+
+}
+
+.titulo{
+
+text-align:center;
+
+font-size:40px;
+
+margin-bottom:50px;
+
+color:#00d9ff;
+
+}
+
+/* SERVIÇOS */
+
+.cards{
+
+display:flex;
+
+justify-content:center;
+
+gap:25px;
+
+flex-wrap:wrap;
+
+}
+
+.card{
+
+width:300px;
+
+background:rgba(9,9,9,.78);
+
+backdrop-filter:blur(6px);
+
+padding:30px;
+
+border-radius:18px;
+
+border:1px solid rgba(255,255,255,.1);
+
+text-align:center;
+
+transition:.3s;
+
+}
+
+.card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 0 20px rgba(0,217,255,.25);
+
+}
+
+.card i{
+
+font-size:55px;
+
+color:#00d9ff;
+
+}
+
+.card h3{
+
+margin:20px 0;
+
+}
+
+.card p{
+
+font-size:28px;
+
+color:#00d9ff;
+
+margin-bottom:10px;
+
+}
+
+.card small{
+
+color:#d4d4d4;
+
+}
+
+.card a{
+
+display:inline-block;
+
+margin-top:15px;
+
+padding:12px 20px;
+
+border:1px solid #00d9ff;
+
+border-radius:8px;
+
+text-decoration:none;
+
+color:#00d9ff;
+
+transition:.3s;
+
+}
+
+.card a:hover{
+
+background:#00d9ff;
+
+color:#000;
+
+}
+
+/* SOBRE */
+.sobre img{
+
+width:230px;
+
+height:230px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+object-position:center;
+
+border:4px solid #00d9ff;
+
+box-shadow:0 0 25px rgba(0,217,255,.45);
+
+transition:.3s;
+
+}
+
+.sobre img:hover{
+
+transform:scale(1.05);
+
+}
+
+.sobre{
+
+max-width:850px;
+
+margin:auto;
+
+text-align:center;
+
+background:rgba(9,9,9,.78);
+
+backdrop-filter:blur(6px);
+
+padding:40px;
+
+border-radius:20px;
+
+}
+
+.sobre img{
+
+width:230px;
+
+height:230px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+border:3px solid #00d9ff;
+
+}
+
+.sobre p{
+
+margin-top:25px;
+
+line-height:1.8;
+
+font-size:18px;
+
+}
+
+/* CONTATO */
+
+.horario{
+
+max-width:700px;
+
+margin:auto;
+
+background:rgba(9,9,9,.78);
+
+backdrop-filter:blur(6px);
+
+padding:30px;
+
+border-radius:18px;
+
+}
+
+.linha{
+
+display:flex;
+
+justify-content:space-between;
+
+padding:15px 0;
+
+border-bottom:1px solid rgba(255,255,255,.1);
+
+}
+
+/* FOOTER */
+
+footer{
+
+text-align:center;
+
+padding:40px;
+
+background:rgba(0,0,0,.4);
+
+}
+
+/* WHATSAPP */
+
+.whats{
+
+position:fixed;
+
+right:20px;
+
+bottom:20px;
+
+width:65px;
+
+height:65px;
+
+border-radius:50%;
+
+background:#25d366;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:35px;
+
+color:#fff;
+
+text-decoration:none;
+
+transition:.3s;
+
+}
+
+.whats:hover{
+
+transform:scale(1.1);
+
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+header{
+
+flex-direction:column;
+
+gap:20px;
+
+}
+
+nav{
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+gap:20px;
+
+}
+
+.hero{
+
+min-height:65vh;
+
+}
+
+.hero h1{
+
+font-size:48px;
+
+}
+
+.hero p{
+
+font-size:18px;
+
+}
+
+.linha{
+
+flex-direction:column;
+
+gap:5px;
+
+}
+
+.card{
+
+width:100%;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+
+<h1>Eleve Studio</h1>
+
+<span></span>
+
+</div>
+
+<nav>
+
+<a href="#inicio">Início</a>
+
+<a href="#servicos">Serviços</a>
+
+<a href="#sobre">Sobre</a>
+
+
+<a href="#contato">Contato</a>
+
+</nav>
+
+<a class="btn"
+
+href="https://wa.me/5511997837119?text=Olá Carol, gostaria de agendar um horário."
+
+target="_blank">
+
+Agendar
+
+</a>
+
+</header>
+
+<section id="inicio" class="hero">
+
+<div class="hero-content">
+
+<h2>SEU ESTILO, NOSSA ARTE</h2>
+
+<h1>Eleve Studio</h1>
+
+<p>
+
+Precisão, atitude e confiança em cada detalhe do seu visual.
+
+</p>
+
+<a class="btn"
+
+href="https://wa.me/5511997837119"
+
+target="_blank">
+
+AGENDAR PELO WHATSAPP
+
+</a>
+
+</div>
+
+</section>
+
+<section id="servicos">
+
+<h2 class="titulo">
+
+
+SERVIÇOS
+
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<i class="fas fa-fire"></i>
+
+<h3>Barba na Toalha Quente</h3>
+
+<p>R$ 60,00</p>
+
+<small>60 min</small><br><br>
+
+<a href="https://wa.me/5511997837119">
+
+Agendar
+
+</a>
+
+</div>
+
+
+<div class="card">
+
+<i class="fas fa-wind"></i>
+
+<h3>Botox no Cabelo</h3>
+
+<small>A partir de:</small>
+
+<p>R$ 60,00</p>
+
+<small>60 min</small><br><br>
+
+<a href="https://wa.me/5511997837119">
+
+Agendar
+
+</a>
+
+</div>
+
+
+<div class="card">
+
+<i class="fas fa-scissors"></i>
+
+<h3>Combo (Corte + Barba)</h3>
+
+<p>R$ 110,00</p>
+
+<small>60 min</small><br><br>
+
+<a href="https://wa.me/5511997837119">
+
+Agendar
+
+</a>
+
+</div>
+
+
+<div class="card">
+
+<i class="fas fa-user"></i>
+
+<h3>Corte</h3>
+
+<p>R$ 60,00</p>
+
+<small>60 min</small><br><br>
+
+<a href="https://wa.me/5511997837119">
+
+Agendar
+
+</a>
+
+</div>
+
+
+<div class="card">
+
+<i class="fas fa-child"></i>
+
+<h3>Corte Infantil até 10 anos</h3>
+
+<p>R$ 65,00</p>
+
+<small>60 min</small><br><br>
+
+<a href="https://wa.me/5511997837119">
+
+Agendar
+
+</a>
+
+</div>
+
+
+<div class="card">
+
+<i class="fas fa-eye"></i>
+
+<h3>Corte + Sobrancelha</h3>
+
+<p>R$ 75,00</p>
+
+<small>60 min</small><br><br>
+
+<a href="https://wa.me/5511997837119">
+
+Agendar
+
+</a>
+
+</div>
+
+
+<div class="card">
+
+<i class="fas fa-ear-listen"></i>
+
+<h3>Depilação Nariz ou Orelha</h3>
+
+<p>R$ 25,00</p>
+
+<small>15 min</small><br><br>
+
+<a href="https://wa.me/5511997837119">
+
+Agendar
+
+</a>
+
+</div>
+
+
+<div class="card">
+
+<i class="fas fa-sun"></i>
+
+<h3>Luzes na Touca</h3>
+
+<small>A partir de:</small>
+
+<p>R$ 150,00</p>
+
+<small>120 min</small><br><br>
+
+<a href="https://wa.me/5511997837119">
+
+Agendar
+
+</a>
+
+</div>
+
+
+<div class="card">
+
+<i class="fas fa-star"></i>
+
+<h3>Penteado</h3>
+
+<small>A partir de:</small>
+
+<p>R$ 40,00</p>
+
+<small>30 min</small><br><br>
+
+<a href="https://wa.me/5511997837119">
+
+Agendar
+
+</a>
+
+</div>
+
+
+<div class="card">
+
+<i class="fas fa-cut"></i>
+
+<h3>Pezinho no Cabelo</h3>
+
+<p>R$ 25,00</p>
+
+<small>15 min</small><br><br>
+
+<a href="https://wa.me/5511997837119">
+
+Agendar
+
+</a>
+
+</div>
+
+
+<div class="card">
+
+<i class="fas fa-snowflake"></i>
+
+<h3>Platinado</h3>
+
+<small>A partir de:</small>
+
+<p>R$ 200,00</p>
+
+<small>120 min</small><br><br>
+
+<a href="https://wa.me/5511997837119">
+
+Agendar
+
+</a>
+
+</div>
+
+
+<div class="card">
+
+<i class="fas fa-water"></i>
+
+<h3>Progressiva</h3>
+
+<small>A partir de:</small>
+
+<p>R$ 100,00</p>
+
+<small>60 min</small><br><br>
+
+<a href="https://wa.me/5511997837119">
+
+Agendar
+
+</a>
+
+</div>
+
+
+<div class="card">
+
+<i class="fas fa-eye"></i>
+
+<h3>Sobrancelha</h3>
+
+<p>R$ 20,00</p>
+
+<small>15 min</small><br><br>
+
+<a href="https://wa.me/5511997837119">
+
+Agendar
+
+</a>
+
+</div>
+
+</div>
+
+
+</section>
+
+<section id="sobre">
+
+<h2 class="titulo">
+
+SOBRE A CAROL
+
+</h2>
+
+<div class="sobre">
+
+<img src="carol.jpeg" alt="Carol">
+
+<p>
+
+Olá, eu sou a Carol.
+
+Trabalho com cortes masculinos e barba, oferecendo um atendimento acolhedor, profissional e personalizado para cada cliente.
+
+</p>
+
+</div>
+
+</section>
+
+<section id="contato">
+
+<h2 class="titulo">
+
+HORÁRIO DE FUNCIONAMENTO
+
+</h2>
+
+<div class="horario">
+
+<div class="linha">
+
+<span>Segunda a Sexta</span>
+
+<strong>10h às 19h</strong>
+
+</div>
+
+<div class="linha">
+
+<span>Sábado</span>
+
+<strong>09h às 16h</strong>
+
+</div>
+
+<div class="linha">
+
+<span>Domingo</span>
+
+<strong>Fechado</strong>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>WhatsApp: (11) 99783-7119</p>
+
+<p>© Carol Barber</p>
+
+</footer>
+
+<a class="whats"
+
+href="https://wa.me/5511997837119"
+
+target="_blank">
+
+<i class="fab fa-whatsapp"></i>
+
+</a>
+
+</body>
+
+</html>
