@@ -2,955 +2,770 @@
 <html lang="pt-BR">
 
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>ELEVE Studio Barber</title>
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-html{
-scroll-behavior:smooth;
-}
-
-body{
-
-background:
-linear-gradient(
-rgba(0,0,0,.80),
-rgba(0,0,0,.88)
-),
-url('carol.jpeg');
-
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-background-attachment:fixed;
-
-color:#fff;
-
-}
-
-/* HEADER */
-
-header{
-
-position:sticky;
-
-top:0;
-
-background:rgba(0,0,0,.85);
-
-backdrop-filter:blur(10px);
-
-padding:18px 5%;
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-border-bottom:1px solid rgba(255,255,255,.08);
-
-z-index:999;
-
-}
-
-.logo h1{
-
-font-size:38px;
-
-}
-
-.logo span{
-
-color:#d4b07b;
-
-}
-
-nav{
-
-display:flex;
-
-gap:35px;
-
-}
-
-nav a{
-
-text-decoration:none;
-
-color:#fff;
-
-font-weight:bold;
-
-transition:.3s;
-
-}
-
-nav a:hover{
-
-color:#d4b07b;
-
-}
-
-.btn{
-
-background:#d4b07b;
-
-color:#000;
-
-padding:12px 22px;
-
-border-radius:10px;
-
-text-decoration:none;
-
-font-weight:bold;
-
-transition:.3s;
-
-}
-
-.btn:hover{
-
-transform:translateY(-4px);
-
-}
-
-/* HERO */
-
-.hero{
-
-min-height:90vh;
-
-display:flex;
-
-align-items:center;
-
-}
-
-.hero-content{
-
-padding:0 10%;
-
-max-width:800px;
-
-}
-
-.hero h2{
-
-color:#d4b07b;
-
-font-size:22px;
-
-}
-
-.hero h1{
-
-font-size:72px;
-
-margin:20px 0;
-
-}
-
-.hero p{
-
-font-size:22px;
-
-margin-bottom:30px;
-
-}
-
-/* SEÇÕES */
-
-section{
-
-padding:100px 10%;
-
-}
-
-.titulo{
-
-text-align:center;
-
-font-size:42px;
-
-margin-bottom:60px;
-
-color:#d4b07b;
-
-}
-
-/* CARDS */
-
-.cards{
-
-display:flex;
-
-justify-content:center;
-
-gap:25px;
-
-flex-wrap:wrap;
-
-}
-
-.card{
-
-width:300px;
-
-background:rgba(9,9,9,.80);
-
-padding:30px;
-
-border-radius:20px;
-
-border:1px solid rgba(255,255,255,.08);
-
-text-align:center;
-
-transition:.3s;
-
-backdrop-filter:blur(6px);
-
-}
-
-.card:hover{
-
-transform:translateY(-10px);
-
-}
-
-.card i{
-
-font-size:50px;
-
-color:#d4b07b;
-
-}
-
-.card h3{
-
-margin:20px 0;
-
-}
-
-.card p{
-
-font-size:28px;
-
-color:#d4b07b;
-
-}
-
-.card small{
-
-display:block;
-
-margin:10px 0;
-
-color:#ccc;
-
-}
-
-.card a{
-
-display:inline-block;
-
-margin-top:20px;
-
-padding:12px 20px;
-
-border:1px solid #d4b07b;
-
-border-radius:10px;
-
-text-decoration:none;
-
-color:#d4b07b;
-
-transition:.3s;
-
-}
-
-.card a:hover{
-
-background:#d4b07b;
-
-color:#000;
-
-}
-
-/* SOBRE */
-
-.sobre{
-
-max-width:900px;
-
-margin:auto;
-
-text-align:center;
-
-background:rgba(9,9,9,.80);
-
-padding:40px;
-
-border-radius:25px;
-
-backdrop-filter:blur(6px);
-
-}
-
-.sobre img{
-
-width:250px;
-
-height:250px;
-
-border-radius:50%;
-
-object-fit:cover;
-
-border:4px solid #d4b07b;
-
-}
-
-.sobre p{
-
-line-height:1.8;
-
-margin-top:20px;
-
-}
-
-/* CONTATO */
-
-.horario{
-
-max-width:800px;
-
-margin:auto;
-
-background:rgba(9,9,9,.80);
-
-padding:35px;
-
-border-radius:25px;
-
-}
-
-.linha{
-
-display:flex;
-
-justify-content:space-between;
-
-padding:18px 0;
-
-border-bottom:1px solid rgba(255,255,255,.08);
-
-}
-
-/* FOOTER */
-
-footer{
-
-text-align:center;
-
-padding:40px;
-
-}
-
-/* WHATS */
-
-.whats{
-
-position:fixed;
-
-right:20px;
-
-bottom:20px;
-
-width:70px;
-
-height:70px;
-
-background:#25d366;
-
-border-radius:50%;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-font-size:35px;
-
-color:#fff;
-
-text-decoration:none;
-
-}
-
-.whats:hover{
-
-transform:scale(1.1);
-
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-header{
-
-flex-direction:column;
-
-gap:20px;
-
-}
-
-nav{
-
-flex-wrap:wrap;
-
-justify-content:center;
-
-gap:18px;
-
-}
-
-.hero h1{
-
-font-size:50px;
-
-}
-
-.hero p{
-
-font-size:18px;
-
-}
-
-.card{
-
-width:100%;
-
-}
-
-.linha{
-
-flex-direction:column;
-
-gap:10px;
-
-}
-
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELEVE Studio Barber</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, .80), rgba(0, 0, 0, .88)), url('carol.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #fff;
+        }
+
+        /* HEADER */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(0, 0, 0, .85);
+            backdrop-filter: blur(10px);
+            padding: 18px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+            z-index: 999;
+        }
+
+        .logo h1 {
+            font-size: 38px;
+        }
+
+        .logo span {
+            color: #d4b07b;
+        }
+
+        nav {
+            display: flex;
+            gap: 35px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        nav a:hover {
+            color: #d4b07b;
+        }
+
+        .btn {
+            background: #d4b07b;
+            color: #000;
+            padding: 12px 22px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: .3s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            padding: 0 10%;
+            max-width: 800px;
+        }
+
+        .hero h2 {
+            color: #d4b07b;
+            font-size: 22px;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            margin: 20px 0;
+        }
+
+        .hero p {
+            font-size: 22px;
+            margin-bottom: 30px;
+        }
+
+        /* SEÇÕES */
+        section {
+            padding: 100px 10%;
+        }
+
+        .titulo {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 60px;
+            color: #d4b07b;
+        }
+
+        /* CARDS */
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 300px;
+            background: rgba(9, 9, 9, .80);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, .08);
+            text-align: center;
+            transition: .3s;
+            backdrop-filter: blur(6px);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card i {
+            font-size: 50px;
+            color: #d4b07b;
+        }
+
+        .card h3 {
+            margin: 20px 0;
+        }
+
+        .card p {
+            font-size: 28px;
+            color: #d4b07b;
+        }
+
+        .card small {
+            display: block;
+            margin: 10px 0;
+            color: #ccc;
+        }
+
+        .card a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            border: 1px solid #d4b07b;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #d4b07b;
+            transition: .3s;
+        }
+
+        .card a:hover {
+            background: #d4b07b;
+            color: #000;
+        }
+
+        /* SOBRE */
+        .sobre-container {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+            background: rgba(9, 9, 9, .80);
+            padding: 40px;
+            border-radius: 25px;
+            backdrop-filter: blur(6px);
+        }
+
+        .sobre-container img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #d4b07b;
+        }
+
+        .sobre-container p {
+            line-height: 1.8;
+            margin-top: 20px;
+        }
+
+        /* CONTATO */
+        .horario {
+            max-width: 800px;
+            margin: auto;
+            background: rgba(9, 9, 9, .80);
+            padding: 35px;
+            border-radius: 25px;
+        }
+
+        .linha {
+            display: flex;
+            justify-content: space-between;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, .85);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-conteudo {
+            background: #111;
+            width: 440px;
+            max-width: 95%;
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(0, 217, 255, .3);
+            position: relative;
+        }
+
+        .fechar {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        /* CONTROLES DO CALENDÁRIO (SETAS) */
+        .calendario-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 15px 0;
+            padding: 0 5px;
+        }
+
+        .calendario-header button {
+            background: transparent;
+            border: 1px solid #d4b07b;
+            color: #d4b07b;
+            padding: 5px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: .2s;
+        }
+
+        .calendario-header button:hover {
+            background: #d4b07b;
+            color: #000;
+        }
+
+        .mes-ano-titulo {
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: capitalize;
+        }
+
+        .dias-semana {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            margin-bottom: 5px;
+            font-size: 12px;
+            color: #d4b07b;
+            font-weight: bold;
+        }
+
+        .calendario {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 6px;
+            margin-bottom: 20px;
+        }
+
+        .dia {
+            padding: 10px 0;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .dia-vazio {
+            cursor: default;
+        }
+
+        .disponivel {
+            background: #28a745;
+            color: white;
+        }
+
+        .indisponivel {
+            background: #333;
+            color: #666;
+            cursor: not-allowed;
+        }
+
+        .selecionado {
+            outline: 3px solid #00d9ff;
+        }
+
+        .horarios {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .horarios button {
+            padding: 12px 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: .2s;
+        }
+
+        .horario-livre {
+            background: #00d9ff !important;
+            color: #000;
+        }
+
+        .horario-livre:hover {
+            transform: scale(1.05);
+        }
+
+        .horario-ocupado {
+            background: #333 !important;
+            color: #666;
+            cursor: not-allowed;
+        }
+
+        /* FOOTER & WHATS */
+        footer {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .whats {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 70px;
+            height: 70px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+            color: #fff;
+            text-decoration: none;
+            z-index: 998;
+            transition: .3s;
+        }
+
+        .whats:hover {
+            transform: scale(1.1);
+        }
+
+        /* MOBILE */
+        @media(max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 18px;
+            }
+
+            .hero h1 {
+                font-size: 50px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .card {
+                width: 100%;
+            }
+
+            .linha {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<header>
-
-<div class="logo">
-
-<h1>ELEVE <span>Studio Barber</span></h1>
-
-</div>
-
-<nav>
-
-<a href="#inicio">Início</a>
-
-<a href="#servicos">Serviços</a>
-
-<a href="#sobre">Sobre</a>
-
-<a href="#contato">Contato</a>
-
-</nav>
-
-<a class="btn"
-
-href="https://wa.me/5511997837119"
-
-target="_blank">
-
-Agendar
-
-</a>
-
-</header>
-
-<section id="inicio" class="hero">
-
-<div class="hero-content">
-
-<h2>MAIS QUE UM CORTE, UMA EXPERIÊNCIA</h2>
-
-<h1>ELEVE STUDIO BARBER</h1>
-
-<p>
-
-Eleve seu estilo. Eleve sua confiança.
-
-</p>
-
-<a class="btn"
-
-href="https://wa.me/5511997837119"
-
-target="_blank">
-
-AGENDAR PELO WHATSAPP
-
-</a>
-
-</div>
-
-</section>
-
-<section id="diferenciais">
-
-<h2 class="titulo">
-
-DIFERENCIAIS
-
-</h2>
-
-<div class="cards">
-
-<div class="card">
-
-<i class="fas fa-couch"></i>
-
-<h3>Ambiente Exclusivo</h3>
-
-</div>
-
-<div class="card">
-
-<i class="fas fa-crown"></i>
-
-<h3>Atendimento VIP</h3>
-
-</div>
-
-<div class="card">
-
-<i class="fas fa-spa"></i>
-
-<h3>Conforto e Relaxamento</h3>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="sobre">
-
-<h2 class="titulo">
-
-SOBRE A CAROL
-
-</h2>
-
-<div class="sobre">
-
-
-
-
-
-<!-- COLE AQUI A SEÇÃO SERVIÇOS -->
-
-<section id="servicos">
-
-<h2 class="titulo">
-
-NOSSOS SERVIÇOS
-
-</h2>
-
-<div class="cards">
-
-<div class="card">
-
-<i class="fas fa-fire"></i>
-
-<h3>Barba na Toalha Quente</h3>
-
-<p>R$ 60,00</p>
-
-<small>60 min</small>
-
-<a href="https://wa.me/5511997837119?text=Olá, gostaria de agendar Barba na Toalha Quente." target="_blank">
-
-Agendar
-
-</a>
-
-</div>
-
-<div class="card">
-
-<i class="fas fa-wind"></i>
-
-<h3>Botox no Cabelo</h3>
-
-<small>A partir de:</small>
-
-<p>R$ 60,00</p>
-
-<small>60 min</small>
-
-<a href="https://wa.me/5511997837119?text=Olá, gostaria de agendar Botox no Cabelo." target="_blank">
-
-Agendar
-
-</a>
-
-</div>
-
-<div class="card">
-
-<i class="fas fa-scissors"></i>
-
-<h3>Combo (Corte + Barba)</h3>
-
-<p>R$ 110,00</p>
-
-<small>60 min</small>
-
-<a href="https://wa.me/5511997837119?text=Olá, gostaria de agendar Combo Corte + Barba." target="_blank">
-
-Agendar
-
-</a>
-
-</div>
-
-<div class="card">
-
-<i class="fas fa-user"></i>
-
-<h3>Corte</h3>
-
-<p>R$ 60,00</p>
-
-<small>60 min</small>
-
-<a href="https://wa.me/5511997837119?text=Olá, gostaria de agendar um Corte." target="_blank">
-
-Agendar
-
-</a>
-
-</div>
-
-<div class="card">
-
-<i class="fas fa-child"></i>
-
-<h3>Corte Infantil até 10 anos</h3>
-
-<p>R$ 65,00</p>
-
-<small>60 min</small>
-
-<a href="https://wa.me/5511997837119?text=Olá, gostaria de agendar Corte Infantil." target="_blank">
-
-Agendar
-
-</a>
-
-</div>
-
-<div class="card">
-
-<i class="fas fa-eye"></i>
-
-<h3>Corte + Sobrancelha</h3>
-
-<p>R$ 75,00</p>
-
-<small>60 min</small>
-
-<a href="https://wa.me/5511997837119?text=Olá, gostaria de agendar Corte + Sobrancelha." target="_blank">
-
-Agendar
-
-</a>
-
-</div>
-
-<div class="card">
-
-<i class="fas fa-ear-listen"></i>
-
-<h3>Depilação Nariz ou Orelha</h3>
-
-<p>R$ 25,00</p>
-
-<small>15 min</small>
-
-<a href="https://wa.me/5511997837119?text=Olá, gostaria de agendar Depilação." target="_blank">
-
-Agendar
-
-</a>
-
-</div>
-
-<div class="card">
-
-<i class="fas fa-sun"></i>
-
-<h3>Luzes na Touca</h3>
-
-<small>A partir de:</small>
-
-<p>R$ 150,00</p>
-
-<small>120 min</small>
-
-<a href="https://wa.me/5511997837119?text=Olá, gostaria de agendar Luzes na Touca." target="_blank">
-
-Agendar
-
-</a>
-
-</div>
-
-<div class="card">
-
-<i class="fas fa-star"></i>
-
-<h3>Penteado</h3>
-
-<small>A partir de:</small>
-
-<p>R$ 40,00</p>
-
-<small>30 min</small>
-
-<a href="https://wa.me/5511997837119?text=Olá, gostaria de agendar um Penteado." target="_blank">
-
-Agendar
-
-</a>
-
-</div>
-
-<div class="card">
-
-<i class="fas fa-cut"></i>
-
-<h3>Pezinho no Cabelo</h3>
-
-<p>R$ 25,00</p>
-
-<small>15 min</small>
-
-<a href="https://wa.me/5511997837119?text=Olá, gostaria de agendar Pezinho." target="_blank">
-
-Agendar
-
-</a>
-
-</div>
-
-<div class="card">
-
-<i class="fas fa-snowflake"></i>
-
-<h3>Platinado</h3>
-
-<small>A partir de:</small>
-
-<p>R$ 200,00</p>
-
-<small>120 min</small>
-
-<a href="https://wa.me/5511997837119?text=Olá, gostaria de agendar um Platinado." target="_blank">
-
-Agendar
-
-</a>
-
-</div>
-
-<div class="card">
-
-<i class="fas fa-water"></i>
-
-<h3>Progressiva</h3>
-
-<small>A partir de:</small>
-
-<p>R$ 100,00</p>
-
-<small>60 min</small>
-
-<a href="https://wa.me/5511997837119?text=Olá, gostaria de agendar uma Progressiva." target="_blank">
-
-Agendar
-
-</a>
-
-</div>
-
-<div class="card">
-
-<i class="fas fa-eye"></i>
-
-<h3>Sobrancelha</h3>
-
-<p>R$ 20,00</p>
-
-<small>15 min</small>
-
-<a href="https://wa.me/5511997837119?text=Olá, gostaria de agendar Sobrancelha." target="_blank">
-
-Agendar
-
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="sobre">
-
-<img src="carol.jpeg">
-
-<h3 style="margin-top:20px;color:#d4b07b;">
-
-Carol Barber
-
-</h3>
-
-<p>
-
-Há 5 anos transformando autoestima através da arte da barbearia.
-
-</p>
-
-<p>
-
-Um ambiente exclusivo, criado para quem valoriza conforto, tranquilidade e atendimento personalizado.
-
-</p>
-
-<p>
-
-Cada cliente é atendido individualmente, em um espaço acolhedor preparado para elevar sua confiança.
-
-</p>
-
-</div>
-
-</section>
-
-<section id="contato">
-
-<h2 class="titulo">
-
-CONTATO
-
-</h2>
-
-<div class="horario">
-
-<div class="linha">
-
-<span>📍 Endereço</span>
-
-<strong>
-
-Rua Brigadeiro Henrique Fontenelle, 464
-
-Parque São Domingos - São Paulo/SP
-
-</strong>
-
-</div>
-
-<div class="linha">
-
-<span>📅 Terça a Quinta</span>
-
-<strong>10h às 19h</strong>
-
-</div>
-
-<div class="linha">
-
-<span>📅 Sexta</span>
-
-<strong>09h às 19h</strong>
-
-</div>
-
-<div class="linha">
-
-<span>📅 Sábado</span>
-
-<strong>10h às 18h</strong>
-
-</div>
-
-<div class="linha">
-
-<span>📅 Domingo</span>
-
-<strong>Fechado</strong>
-
-</div>
-
-</div>
-
-</section>
-
-<footer>
-
-<p>WhatsApp: (11) 99783-7119</p>
-
-<p>© ELEVE Studio Barber</p>
-
-</footer>
-
-<a class="whats"
-
-href="https://wa.me/5511997837119"
-
-target="_blank">
-
-<i class="fab fa-whatsapp"></i>
-
-</a>
+    <header>
+        <div class="logo">
+            <h1>ELEVE <span>Studio Barber</span></h1>
+        </div>
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#contato">Contato</a>
+        </nav>
+        <a class="btn" href="https://wa.me/5511997837119" target="_blank">Agendar</a>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h2>MAIS QUE UM CORTE, UMA EXPERIÊNCIA</h2>
+            <h1>ELEVE STUDIO BARBER</h1>
+            <p>Eleve seu estilo. Eleve sua confiança.</p>
+            <a class="btn" href="https://wa.me/5511997837119" target="_blank">AGENDAR PELO WHATSAPP</a>
+        </div>
+    </section>
+
+    <section id="diferenciais">
+        <h2 class="titulo">DIFERENCIAIS</h2>
+        <div class="cards">
+            <div class="card">
+                <i class="fas fa-couch"></i>
+                <h3>Ambiente Exclusivo</h3>
+            </div>
+            <div class="card">
+                <i class="fas fa-crown"></i>
+                <h3>Atendimento VIP</h3>
+            </div>
+            <div class="card">
+                <i class="fas fa-spa"></i>
+                <h3>Conforto e Relaxamento</h3>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicos">
+        <h2 class="titulo">NOSSOS SERVIÇOS</h2>
+        <div class="cards">
+            <div class="card">
+                <i class="fas fa-fire"></i>
+                <h3>Barba na Toalha Quente</h3>
+                <p>R$ 60,00</p>
+                <small>60 min</small>
+                <a href="#" onclick="abrirAgenda('Barba na Toalha Quente'); return false;">Agendar</a>
+            </div>
+            <div class="card">
+                <i class="fas fa-wind"></i>
+                <h3>Botox no Cabelo</h3>
+                <small>A partir de:</small>
+                <p>R$ 60,00</p>
+                <small>60 min</small>
+                <a href="#" onclick="abrirAgenda('Botox no Cabelo'); return false;">Agendar</a>
+            </div>
+            <div class="card">
+                <i class="fas fa-scissors"></i>
+                <h3>Combo (Corte + Barba)</h3>
+                <p>R$ 110,00</p>
+                <small>60 min</small>
+                <a href="#" onclick="abrirAgenda('Combo Corte + Barba'); return false;">Agendar</a>
+            </div>
+            <div class="card">
+                <i class="fas fa-user"></i>
+                <h3>Corte</h3>
+                <p>R$ 60,00</p>
+                <small>60 min</small>
+                <a href="#" onclick="abrirAgenda('Corte'); return false;">Agendar</a>
+            </div>
+            <div class="card">
+                <i class="fas fa-child"></i>
+                <h3>Corte Infantil até 10 anos</h3>
+                <p>R$ 65,00</p>
+                <small>60 min</small>
+                <a href="#" onclick="abrirAgenda('Corte Infantil'); return false;">Agendar</a>
+            </div>
+            <div class="card">
+                <i class="fas fa-eye"></i>
+                <h3>Corte + Sobrancelha</h3>
+                <p>R$ 75,00</p>
+                <small>60 min</small>
+                <a href="#" onclick="abrirAgenda('Corte + Sobrancelha'); return false;">Agendar</a>
+            </div>
+            <div class="card">
+                <i class="fas fa-ear-listen"></i>
+                <h3>Depilação Nariz ou Orelha</h3>
+                <p>R$ 25,00</p>
+                <small>15 min</small>
+                <a href="#" onclick="abrirAgenda('Depilação Nariz/Orelha'); return false;">Agendar</a>
+            </div>
+            <div class="card">
+                <i class="fas fa-sun"></i>
+                <h3>Luzes na Touca</h3>
+                <small>A partir de:</small>
+                <p>R$ 150,00</p>
+                <small>120 min</small>
+                <a href="#" onclick="abrirAgenda('Luzes na Touca'); return false;">Agendar</a>
+            </div>
+            <div class="card">
+                <i class="fas fa-star"></i>
+                <h3>Penteado</h3>
+                <small>A partir de:</small>
+                <p>R$ 40,00</p>
+                <small>30 min</small>
+                <a href="#" onclick="abrirAgenda('Penteado'); return false;">Agendar</a>
+            </div>
+            <div class="card">
+                <i class="fas fa-cut"></i>
+                <h3>Pezinho no Cabelo</h3>
+                <p>R$ 25,00</p>
+                <small>15 min</small>
+                <a href="#" onclick="abrirAgenda('Pezinho'); return false;">Agendar</a>
+            </div>
+            <div class="card">
+                <i class="fas fa-snowflake"></i>
+                <h3>Platinado</h3>
+                <small>A partir de:</small>
+                <p>R$ 200,00</p>
+                <small>120 min</small>
+                <a href="#" onclick="abrirAgenda('Platinado'); return false;">Agendar</a>
+            </div>
+            <div class="card">
+                <i class="fas fa-water"></i>
+                <h3>Progressiva</h3>
+                <small>A partir de:</small>
+                <p>R$ 100,00</p>
+                <small>60 min</small>
+                <a href="#" onclick="abrirAgenda('Progressiva'); return false;">Agendar</a>
+            </div>
+            <div class="card">
+                <i class="fas fa-eye"></i>
+                <h3>Sobrancelha</h3>
+                <p>R$ 20,00</p>
+                <small>15 min</small>
+                <a href="#" onclick="abrirAgenda('Sobrancelha'); return false;">Agendar</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre">
+        <h2 class="titulo">SOBRE A CAROL</h2>
+        <div class="sobre-container">
+            <img src="carol.jpeg" alt="Carol Barber">
+            <h3 style="margin-top:20px; color:#d4b07b;">Carol Barber</h3>
+            <p>Há 5 anos transformando autoestima através da arte da barbearia.</p>
+            <p>Um ambiente exclusivo, criado para quem valoriza conforto, tranquilidade e atendimento personalizado.</p>
+            <p>Cada cliente é atendido individualmente, em um espaço acolhedor preparado para elevar sua confiança.</p>
+        </div>
+    </section>
+
+    <div id="modalAgendamento" class="modal">
+        <div class="modal-conteudo">
+            <span class="fechar">&times;</span>
+            <h2 id="tituloServico">Agendar Serviço</h2>
+            
+            <div class="calendario-header">
+                <button onclick="mudarMes(-1)"><i class="fas fa-chevron-left"></i></button>
+                <span id="mesAnoTitulo" class="mes-ano-titulo">Junho 2026</span>
+                <button onclick="mudarMes(1)"><i class="fas fa-chevron-right"></i></button>
+            </div>
+
+            <div class="dias-semana">
+                <div>Dom</div><div>Seg</div><div>Ter</div><div>Qua</div><div>Qui</div><div>Sex</div><div>Sáb</div>
+            </div>
+
+            <div id="calendario" class="calendario"></div>
+            
+            <h3>Horários disponíveis</h3>
+            <div id="horarios" class="horarios"></div>
+        </div>
+    </div>
+
+    <section id="contato">
+        <h2 class="titulo">CONTATO</h2>
+        <div class="horario">
+            <div class="linha">
+                <span>Endereço</span>
+                <strong>Rua Brigadeiro Henrique Fontenelle, 464<br>Parque São Domingos - São Paulo/SP</strong>
+            </div>
+            <div class="linha">
+                <span>Terça a Quinta</span>
+                <strong>10h às 19h</strong>
+            </div>
+            <div class="linha">
+                <span>Sexta</span>
+                <strong>09h às 19h</strong>
+            </div>
+            <div class="linha">
+                <span>Sábado</span>
+                <strong>10h às 18h</strong>
+            </div>
+            <div class="linha">
+                <span>Domingo</span>
+                <strong>Fechado</strong>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>WhatsApp: (11) 99783-7119</p>
+        <p>© ELEVE Studio Barber</p>
+    </footer>
+
+    <a class="whats" href="https://wa.me/5511997837119" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Lista de horários OCUPADOS (Formato: 'AAAA-MM-DD')
+        const agenda = {
+            '2026-06-20': ['10:00', '14:00'],
+            '2026-06-21': ['09:00', '11:00'],
+            '2026-06-22': ['09:00', '11:00'],
+            '2026-06-25': ['09:00', '10:00', '15:00']
+        };
+
+        const modal = document.getElementById('modalAgendamento');
+        const fechar = document.querySelector('.fechar');
+        const titulo = document.getElementById('tituloServico');
+        const horariosDiv = document.getElementById('horarios');
+        const mesAnoTitulo = document.getElementById('mesAnoTitulo');
+        
+        let servicoSelecionado = '';
+        let dataSelecionada = '';
+        
+        // Controladores de navegação da data atual
+        let dataAtual = new Date(); 
+
+        const horariosPadrao = ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00', '17:00'];
+        const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+
+        function abrirAgenda(servico) {
+            servicoSelecionado = servico;
+            titulo.innerHTML = 'Agendar: ' + servico;
+            modal.style.display = 'flex';
+            dataSelecionada = ''; 
+            horariosDiv.innerHTML = ''; 
+            dataAtual = new Date(); // Reseta para o mês atual ao abrir
+            gerarCalendario();
+        }
+
+        function gerarCalendario() {
+            const calendario = document.getElementById('calendario');
+            calendario.innerHTML = '';
+
+            const ano = dataAtual.getFullYear();
+            const mes = dataAtual.getMonth();
+
+            // Atualiza o título (Ex: Junho 2026)
+            mesAnoTitulo.innerText = `${meses[mes]} ${ano}`;
+
+            // Primeiro dia do mês e total de dias no mês
+            const primeiroDiaSemana = new Date(ano, mes, 1).getDay();
+            const totalDiasMes = new Date(ano, mes + 1, 0).getDate();
+
+            // Data de hoje para travar dias anteriores
+            const hoje = new Date();
+            hoje.setHours(0,0,0,0);
+
+            // Cria espaços em branco para alinhar com o dia da semana correto
+            for (let i = 0; i < primeiroDiaSemana; i++) {
+                const divVazia = document.createElement('div');
+                divVazia.className = 'dia-vazio';
+                calendario.appendChild(divVazia);
+            }
+
+            // Renderiza os dias reais do mês
+            for (let dia = 1; dia <= totalDiasMes; dia++) {
+                const dataLoop = new Date(ano, mes, dia);
+                const stringData = `${ano}-${String(mes + 1).padStart(2, '0')}-${String(dia).padStart(2, '0')}`;
+                
+                const div = document.createElement('div');
+                div.innerText = dia;
+
+                // Bloqueia domingos (dia da semana 0) ou dias passados
+                if (dataLoop.getDay() === 0 || dataLoop < hoje) {
+                    div.className = 'dia indisponivel';
+                } else {
+                    div.className = 'dia disponivel';
+                    // Se já estava selecionado antes, mantém a borda acesa
+                    if (stringData === dataSelecionada) div.classList.add('selecionado');
+                    
+                    div.onclick = () => selecionarData(stringData, div);
+                }
+                calendario.appendChild(div);
+            }
+        }
+
+        function mudarMes(direcao) {
+            // Avança ou recua 1 mês na data de controle
+            dataAtual.setMonth(dataAtual.getMonth() + direcao);
+            gerarCalendario();
+            horariosDiv.innerHTML = ''; // Limpa os horários ao mudar de mês
+        }
+
+        function selecionarData(data, elemento) {
+            dataSelecionada = data;
+            document.querySelectorAll('.dia').forEach(x => x.classList.remove('selecionado'));
+            elemento.classList.add('selecionado');
+            mostrarHorarios();
+        }
+
+        function mostrarHorarios() {
+            horariosDiv.innerHTML = '';
+            const ocupados = agenda[dataSelecionada] || [];
+
+            horariosPadrao.forEach(h => {
+                const btn = document.createElement('button');
+                btn.innerText = h;
+
+                if (ocupados.includes(h)) {
+                    btn.className = 'horario-ocupado';
+                    btn.disabled = true;
+                } else {
+                    btn.className = 'horario-livre';
+                    btn.onclick = () => enviarWhatsapp(h);
+                }
+                horariosDiv.appendChild(btn);
+            });
+        }
+
+        function enviarWhatsapp(horario) {
+            if (!dataSelecionada) {
+                alert('Por favor, escolha uma data no calendário.');
+                return;
+            }
+
+            // Converte AAAA-MM-DD para DD/MM/AAAA para enviar legível no WhatsApp
+            const dataFormatada = dataSelecionada.split('-').reverse().join('/');
+
+            const msg = `Olá, gostaria de agendar:\n\nServiço: ${servicoSelecionado}\nData: ${dataFormatada}\nHorário: ${horario}`;
+            
+            window.open(`https://wa.me/5511997837119?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        // Fechar Modal
+        fechar.onclick = () => modal.style.display = 'none';
+        window.onclick = (e) => { if (e.target === modal) modal.style.display = 'none'; }
+    </script>
 
 </body>
-
 </html>
