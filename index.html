@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
     html { scroll-behavior: smooth; }
 
     body {
@@ -39,9 +38,16 @@
       background: #d4b07b; color: #000;
       padding: 12px 22px; border-radius: 10px;
       text-decoration: none; font-weight: bold;
-      transition: .3s; display: inline-block;
+      transition: .3s; display: inline-block; border: none; cursor: pointer;
     }
     .btn:hover { transform: translateY(-4px); }
+    .btn-outline {
+      background: transparent; color: #d4b07b;
+      padding: 10px 18px; border-radius: 10px;
+      border: 1px solid #d4b07b; font-weight: bold;
+      cursor: pointer; transition: .3s; font-size: 14px;
+    }
+    .btn-outline:hover { background: #d4b07b; color: #000; }
 
     /* ── HERO ── */
     .hero { min-height: 90vh; display: flex; align-items: center; }
@@ -90,7 +96,7 @@
     .sobre-container p { line-height: 1.8; margin-top: 20px; }
 
     /* ── CONTATO ── */
-    .horario {
+    .horario-box {
       max-width: 800px; margin: auto;
       background: rgba(9,9,9,.80); padding: 35px; border-radius: 25px;
     }
@@ -110,7 +116,7 @@
     }
     .whats:hover { transform: scale(1.1); }
 
-    /* ── MODAL ── */
+    /* ── MODAL AGENDAMENTO ── */
     .modal {
       display: none; position: fixed; top: 0; left: 0;
       width: 100%; height: 100%;
@@ -126,13 +132,14 @@
     }
     .fechar {
       position: absolute; top: 15px; right: 20px;
-      font-size: 30px; cursor: pointer; color: #fff;
+      font-size: 30px; cursor: pointer; color: #fff; line-height: 1;
     }
+    .fechar:hover { color: #d4b07b; }
 
     /* ── CALENDÁRIO ── */
     .calendario-header {
       display: flex; justify-content: space-between;
-      align-items: center; margin: 15px 0; padding: 0 5px;
+      align-items: center; margin: 15px 0;
     }
     .calendario-header button {
       background: transparent; border: 1px solid #d4b07b;
@@ -140,40 +147,43 @@
       cursor: pointer; font-weight: bold; transition: .2s;
     }
     .calendario-header button:hover { background: #d4b07b; color: #000; }
-    .mes-ano-titulo { font-size: 18px; font-weight: bold; text-transform: capitalize; }
+    .mes-ano-titulo { font-size: 18px; font-weight: bold; }
 
     .dias-semana {
       display: grid; grid-template-columns: repeat(7,1fr);
-      gap: 5px; margin-bottom: 5px;
-      font-size: 12px; color: #d4b07b; font-weight: bold; text-align: center;
+      gap: 4px; margin-bottom: 4px;
+      font-size: 11px; color: #d4b07b; font-weight: bold; text-align: center;
     }
-    .calendario { display: grid; grid-template-columns: repeat(7,1fr); gap: 6px; margin-bottom: 20px; }
-
+    .calendario {
+      display: grid; grid-template-columns: repeat(7,1fr);
+      gap: 6px; margin-bottom: 20px;
+    }
     .dia {
       padding: 10px 0; border-radius: 8px;
       text-align: center; font-weight: bold;
-      cursor: pointer; font-size: 14px;
+      cursor: pointer; font-size: 14px; transition: .15s;
     }
-    .dia-vazio  { cursor: default; }
-    .disponivel { background: #28a745; color: #fff; }
-    .indisponivel { background: #333; color: #555; cursor: not-allowed; }
-    .selecionado { outline: 3px solid #d4b07b; }
+    .dia-vazio     { cursor: default; }
+    .disponivel    { background: #28a745; color: #fff; }
+    .disponivel:hover { opacity: .85; }
+    .indisponivel  { background: #2a2a2a; color: #444; cursor: not-allowed; }
+    .selecionado   { outline: 3px solid #d4b07b; outline-offset: 2px; }
 
     /* ── HORÁRIOS ── */
-    .horarios { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 15px; }
+    .horarios { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 10px; }
     .horarios button {
       padding: 12px 18px; border: none;
       border-radius: 10px; cursor: pointer;
-      font-weight: bold; transition: .2s; font-size: 14px;
+      font-weight: bold; font-size: 14px; transition: .15s;
     }
-    .horario-livre  { background: #28a745 !important; color: #fff; }
-    .horario-livre:hover  { transform: scale(1.05); }
-    .horario-livre.selecionado-h { background: #d4b07b !important; color: #000; outline: 3px solid #fff; }
-    .horario-ocupado { background: #c0392b !important; color: #fff; cursor: not-allowed; opacity: .85; }
+    .horario-livre { background: #28a745; color: #fff; }
+    .horario-livre:hover { transform: scale(1.05); }
+    .horario-livre.selecionado-h { background: #d4b07b !important; color: #000; outline: 2px solid #fff; }
+    .horario-ocupado { background: #c0392b !important; color: #fff; cursor: not-allowed; opacity: .9; }
 
     /* ── CAMPO NOME ── */
     .campo-nome { margin: 16px 0 4px; }
-    .campo-nome label { display: block; margin-bottom: 6px; color: #d4b07b; font-size: 14px; }
+    .campo-nome label { display: block; margin-bottom: 6px; color: #d4b07b; font-size: 14px; font-weight: bold; }
     .campo-nome input {
       width: 100%; padding: 10px 14px; border-radius: 8px;
       border: 1px solid #444; background: #1a1a1a;
@@ -188,72 +198,103 @@
       cursor: pointer; transition: .2s;
     }
     .btn-confirmar:hover { opacity: .88; transform: translateY(-2px); }
-    .btn-confirmar:disabled { opacity: .4; cursor: not-allowed; transform: none; }
+    .btn-confirmar:disabled { opacity: .35; cursor: not-allowed; transform: none; }
 
-    .msg-modal { margin-top: 12px; padding: 12px 16px; border-radius: 8px; font-size: 14px; display: none; line-height: 1.5; }
+    .msg-modal {
+      margin-top: 12px; padding: 12px 16px;
+      border-radius: 8px; font-size: 14px;
+      line-height: 1.6; display: none;
+    }
     .msg-ok  { background: #1a3a1a; color: #5cb85c; border: 1px solid #2d6a2d; display: block; }
     .msg-err { background: #3a1a1a; color: #e74c3c; border: 1px solid #7a2a2a; display: block; }
 
     .legenda { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 14px; font-size: 12px; color: #aaa; }
     .legenda span { display: flex; align-items: center; gap: 6px; }
-    .dot { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+    .dot { width: 12px; height: 12px; border-radius: 3px; display: inline-block; flex-shrink: 0; }
 
-    /* ── PAINEL ADMIN ── */
-    .admin-overlay {
+    .wpp-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #25d366; color: #fff; padding: 10px 16px;
+      border-radius: 10px; text-decoration: none; font-weight: bold;
+      font-size: 14px; margin-top: 10px; transition: .2s;
+    }
+    .wpp-link:hover { opacity: .88; }
+
+    /* ── MODAL ADMIN LOGIN ── */
+    .admin-modal {
       display: none; position: fixed; top: 0; left: 0;
       width: 100%; height: 100%; background: rgba(0,0,0,.92);
-      z-index: 10000; justify-content: center; align-items: flex-start;
-      overflow-y: auto; padding: 40px 20px;
+      z-index: 10000; justify-content: center; align-items: center;
     }
-    .admin-box {
-      background: #111; width: 100%; max-width: 900px;
-      border-radius: 20px; padding: 32px;
+    .admin-login-box {
+      background: #111; width: 320px; max-width: 95%;
+      padding: 32px; border-radius: 20px;
       border: 1px solid rgba(212,176,123,.3);
+      text-align: center;
     }
-    .admin-box h2 { color: #d4b07b; margin-bottom: 24px; font-size: 22px; }
-    .admin-login-wrap { max-width: 320px; }
-    .admin-login-wrap label { display: block; color: #aaa; font-size: 13px; margin-bottom: 6px; }
-    .admin-login-wrap input {
+    .admin-login-box h2 { color: #d4b07b; margin-bottom: 20px; }
+    .admin-login-box input {
       width: 100%; padding: 10px 14px; border-radius: 8px;
       border: 1px solid #444; background: #1a1a1a;
       color: #fff; font-size: 15px; margin-bottom: 10px;
     }
-    .btn-login {
-      width: 100%; padding: 12px; background: #d4b07b;
-      color: #000; border: none; border-radius: 8px;
-      font-size: 15px; font-weight: bold; cursor: pointer;
+    .admin-login-box input:focus { outline: none; border-color: #d4b07b; }
+    .err-login { color: #e74c3c; font-size: 13px; margin-top: 4px; display: none; }
+    .btn-fechar-login {
+      margin-top: 10px; width: 100%; padding: 10px;
+      background: transparent; border: 1px solid #444;
+      color: #aaa; border-radius: 8px; cursor: pointer;
     }
-    .err-login { color: #e74c3c; font-size: 13px; margin-top: 6px; display: none; }
+
+    /* ── PAINEL ADMIN ── */
+    .admin-painel {
+      display: none; position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%; background: rgba(0,0,0,.95);
+      z-index: 10000; overflow-y: auto; padding: 30px 20px;
+    }
+    .admin-inner {
+      max-width: 960px; margin: 0 auto;
+      background: #111; border-radius: 20px;
+      padding: 32px; border: 1px solid rgba(212,176,123,.3);
+    }
+    .admin-inner h2 { color: #d4b07b; font-size: 22px; margin-bottom: 24px; }
 
     .resumo-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 20px; }
-    .res-card { background: #1a1a1a; border-radius: 12px; padding: 16px; text-align: center; border: 1px solid #333; }
+    .res-card {
+      background: #1a1a1a; border-radius: 12px;
+      padding: 16px; text-align: center; border: 1px solid #2a2a2a;
+    }
     .res-num   { font-size: 28px; font-weight: bold; color: #d4b07b; }
-    .res-label { font-size: 12px; color: #888; margin-top: 4px; }
+    .res-label { font-size: 12px; color: #666; margin-top: 4px; }
 
     .admin-filtros { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 16px; }
     .admin-filtros select {
-      padding: 8px 12px; border-radius: 8px; border: 1px solid #444;
-      background: #1a1a1a; color: #fff; font-size: 13px;
+      padding: 8px 12px; border-radius: 8px;
+      border: 1px solid #444; background: #1a1a1a;
+      color: #fff; font-size: 13px;
     }
-    .btn-limpar-tudo {
-      margin-left: auto; padding: 8px 16px; background: transparent;
-      border: 1px solid #c0392b; color: #e74c3c; border-radius: 8px;
-      cursor: pointer; font-size: 13px; transition: .2s;
+    .btn-admin-sec {
+      padding: 8px 16px; background: transparent;
+      border: 1px solid #555; color: #aaa;
+      border-radius: 8px; cursor: pointer; font-size: 13px; transition: .2s;
     }
-    .btn-limpar-tudo:hover { background: #3a1a1a; }
-    .btn-fechar-admin {
-      padding: 8px 16px; background: transparent; border: 1px solid #555;
-      color: #aaa; border-radius: 8px; cursor: pointer; font-size: 13px;
+    .btn-admin-sec:hover { border-color: #d4b07b; color: #d4b07b; }
+    .btn-danger {
+      padding: 8px 16px; background: transparent;
+      border: 1px solid #c0392b; color: #e74c3c;
+      border-radius: 8px; cursor: pointer; font-size: 13px;
+      margin-left: auto; transition: .2s;
     }
+    .btn-danger:hover { background: #3a1a1a; }
 
     .tabela-wrap { overflow-x: auto; }
     table.ag-table { width: 100%; border-collapse: collapse; font-size: 13px; }
     table.ag-table th {
       text-align: left; padding: 10px 10px;
-      border-bottom: 1px solid #333; color: #888;
+      border-bottom: 1px solid #2a2a2a; color: #666;
       font-size: 11px; text-transform: uppercase; font-weight: 600;
     }
-    table.ag-table td { padding: 12px 10px; border-bottom: 1px solid #1e1e1e; }
+    table.ag-table td { padding: 12px 10px; border-bottom: 1px solid #1a1a1a; vertical-align: middle; }
     .badge {
       display: inline-block; padding: 3px 10px;
       border-radius: 20px; font-size: 11px; font-weight: bold;
@@ -266,33 +307,24 @@
       cursor: pointer; font-size: 12px; transition: .2s;
     }
     .btn-cancelar:hover { background: #3a1a1a; }
-    .empty-ag { text-align: center; padding: 30px; color: #555; font-size: 14px; }
-
-    .wpp-link {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: #25d366; color: #fff; padding: 10px 18px;
-      border-radius: 10px; text-decoration: none;
-      font-weight: bold; font-size: 14px; margin-top: 12px;
-      transition: .2s;
-    }
-    .wpp-link:hover { opacity: .88; }
+    .empty-ag { text-align: center; padding: 30px; color: #444; font-size: 14px; }
 
     /* ── MOBILE ── */
     @media(max-width: 768px) {
-      header { flex-direction: column; gap: 20px; }
+      header { flex-direction: column; gap: 15px; text-align: center; }
       nav { flex-wrap: wrap; justify-content: center; gap: 18px; }
-      .hero h1 { font-size: 50px; }
+      .hero h1 { font-size: 46px; }
       .hero p  { font-size: 18px; }
       .card    { width: 100%; }
-      .linha   { flex-direction: column; gap: 10px; }
-      .resumo-cards { grid-template-columns: 1fr 1fr 1fr; }
+      .linha   { flex-direction: column; gap: 8px; }
+      .resumo-cards { grid-template-columns: repeat(3,1fr); }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- ════════════════════════════ HEADER ════════════════════════════ -->
+  <!-- ════════════ HEADER ════════════ -->
   <header>
     <div class="logo"><h1>ELEVE <span>Studio Barber</span></h1></div>
     <nav>
@@ -303,11 +335,11 @@
     </nav>
     <div style="display:flex;gap:10px;align-items:center;">
       <a class="btn" href="https://wa.me/5511997837119" target="_blank">Agendar</a>
-      <button onclick="abrirAdmin()" style="background:transparent;border:1px solid #d4b07b;color:#d4b07b;padding:10px 16px;border-radius:10px;cursor:pointer;font-size:13px;font-weight:bold;transition:.2s;" onmouseover="this.style.background='#d4b07b';this.style.color='#000'" onmouseout="this.style.background='transparent';this.style.color='#d4b07b'">Admin</button>
+      <button class="btn-outline" onclick="abrirLoginAdmin()">Admin</button>
     </div>
   </header>
 
-  <!-- ════════════════════════════ HERO ════════════════════════════ -->
+  <!-- ════════════ HERO ════════════ -->
   <section id="inicio" class="hero">
     <div class="hero-content">
       <h2>MAIS QUE UM CORTE, UMA EXPERIÊNCIA</h2>
@@ -317,7 +349,7 @@
     </div>
   </section>
 
-  <!-- ════════════════════════════ DIFERENCIAIS ════════════════════════════ -->
+  <!-- ════════════ DIFERENCIAIS ════════════ -->
   <section id="diferenciais">
     <h2 class="titulo">DIFERENCIAIS</h2>
     <div class="cards">
@@ -327,7 +359,7 @@
     </div>
   </section>
 
-  <!-- ════════════════════════════ SERVIÇOS ════════════════════════════ -->
+  <!-- ════════════ SERVIÇOS ════════════ -->
   <section id="servicos">
     <h2 class="titulo">NOSSOS SERVIÇOS</h2>
     <div class="cards">
@@ -347,7 +379,7 @@
     </div>
   </section>
 
-  <!-- ════════════════════════════ SOBRE ════════════════════════════ -->
+  <!-- ════════════ SOBRE ════════════ -->
   <section id="sobre">
     <h2 class="titulo">SOBRE A CAROL</h2>
     <div class="sobre-container">
@@ -359,14 +391,11 @@
     </div>
   </section>
 
-  <!-- ════════════════════════════ CONTATO ════════════════════════════ -->
+  <!-- ════════════ CONTATO ════════════ -->
   <section id="contato">
     <h2 class="titulo">CONTATO</h2>
-    <div class="horario">
-      <div class="linha">
-        <span>Endereço</span>
-        <strong>Rua Brigadeiro Henrique Fontenelle, 464<br>Parque São Domingos — São Paulo/SP</strong>
-      </div>
+    <div class="horario-box">
+      <div class="linha"><span>Endereço</span><strong>Rua Brigadeiro Henrique Fontenelle, 464<br>Parque São Domingos — São Paulo/SP</strong></div>
       <div class="linha"><span>Terça a Quinta</span><strong>10h às 19h</strong></div>
       <div class="linha"><span>Sexta</span><strong>09h às 19h</strong></div>
       <div class="linha"><span>Sábado</span><strong>10h às 18h</strong></div>
@@ -376,14 +405,14 @@
 
   <footer>
     <p>WhatsApp: (11) 99783-7119</p>
-    <p>© ELEVE Studio Barber</p>
+    <p style="margin-top:8px;">© ELEVE Studio Barber</p>
   </footer>
 
   <a class="whats" href="https://wa.me/5511997837119" target="_blank">
     <i class="fab fa-whatsapp"></i>
   </a>
 
-  <!-- ════════════════════════════ MODAL AGENDAMENTO ════════════════════════════ -->
+  <!-- ════════════ MODAL AGENDAMENTO ════════════ -->
   <div id="modalAgendamento" class="modal">
     <div class="modal-conteudo">
       <span class="fechar" onclick="fecharModal()">&times;</span>
@@ -399,7 +428,6 @@
         <div>Dom</div><div>Seg</div><div>Ter</div>
         <div>Qua</div><div>Qui</div><div>Sex</div><div>Sáb</div>
       </div>
-
       <div id="calendario" class="calendario"></div>
 
       <h3 style="color:#d4b07b;margin-bottom:10px;font-size:15px;">Horários disponíveis</h3>
@@ -424,82 +452,89 @@
     </div>
   </div>
 
-  <!-- ════════════════════════════ PAINEL ADMIN ════════════════════════════ -->
-  <div id="adminOverlay" class="admin-overlay">
-    <div class="admin-box">
-      <h2>⚙ Painel de Agendamentos</h2>
+  <!-- ════════════ MODAL LOGIN ADMIN ════════════ -->
+  <div id="adminLoginModal" class="admin-modal">
+    <div class="admin-login-box">
+      <h2>Painel Admin</h2>
+      <input type="password" id="senhaAdmin" placeholder="Digite a senha..."
+             onkeydown="if(event.key==='Enter') loginAdmin()">
+      <button class="btn" style="width:100%;padding:12px;" onclick="loginAdmin()">Entrar</button>
+      <div class="err-login" id="erroLogin">Senha incorreta.</div>
+      <button class="btn-fechar-login" onclick="fecharLoginAdmin()">Cancelar</button>
+    </div>
+  </div>
 
-      <!-- Login -->
-      <div id="adminLoginWrap" class="admin-login-wrap">
-        <label>Senha do painel</label>
-        <input type="password" id="senhaAdmin" placeholder="Digite a senha..." onkeydown="if(event.key==='Enter')loginAdmin()">
-        <button class="btn-login" onclick="loginAdmin()">Entrar</button>
-        <div class="err-login" id="erroLogin">Senha incorreta.</div>
-        <button onclick="fecharAdmin()" class="btn-fechar-admin" style="margin-top:10px;">Fechar</button>
+  <!-- ════════════ PAINEL ADMIN ════════════ -->
+  <div id="adminPainel" class="admin-painel">
+    <div class="admin-inner">
+      <h2>⚙ Painel de Agendamentos — ELEVE Studio Barber</h2>
+
+      <div class="resumo-cards" id="resumoCards"></div>
+
+      <div class="admin-filtros">
+        <select id="filtroMes" onchange="renderAdmin()">
+          <option value="">Todos os meses</option>
+        </select>
+        <select id="filtroStatus" onchange="renderAdmin()">
+          <option value="">Todos os status</option>
+          <option value="agendado">Agendados</option>
+          <option value="cancelado">Cancelados</option>
+        </select>
+        <button class="btn-admin-sec" onclick="fecharAdmin()">✕ Fechar</button>
+        <button class="btn-danger" onclick="limparTudo()">🗑 Limpar tudo</button>
       </div>
 
-      <!-- Painel -->
-      <div id="adminPainel" style="display:none;">
-        <div class="resumo-cards" id="resumoCards"></div>
-
-        <div class="admin-filtros">
-          <select id="filtroMes" onchange="renderAdmin()">
-            <option value="">Todos os meses</option>
-          </select>
-          <select id="filtroStatus" onchange="renderAdmin()">
-            <option value="">Todos os status</option>
-            <option value="agendado">Agendados</option>
-            <option value="cancelado">Cancelados</option>
-          </select>
-          <button class="btn-limpar-tudo" onclick="limparTudo()">🗑 Limpar tudo</button>
-          <button onclick="fecharAdmin()" class="btn-fechar-admin">Fechar</button>
-        </div>
-
-        <div class="tabela-wrap">
-          <table class="ag-table">
-            <thead>
-              <tr>
-                <th>Data</th>
-                <th>Horário</th>
-                <th>Cliente</th>
-                <th>Serviço</th>
-                <th>Status</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody id="tbodyAdmin"></tbody>
-          </table>
-          <div class="empty-ag" id="emptyAdmin" style="display:none;">Nenhum agendamento encontrado.</div>
-        </div>
+      <div class="tabela-wrap">
+        <table class="ag-table">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Horário</th>
+              <th>Cliente</th>
+              <th>Serviço</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tbodyAdmin"></tbody>
+        </table>
+        <div class="empty-ag" id="emptyAdmin" style="display:none;">Nenhum agendamento encontrado.</div>
       </div>
     </div>
   </div>
 
-  <!-- ════════════════════════════ SCRIPT ════════════════════════════ -->
+  <!-- ════════════════════════════════════════
+       SCRIPT — mesma lógica do Horário Espiritual
+       localStorage como banco de dados local
+  ════════════════════════════════════════ -->
   <script>
-    /* ── CONFIG ── */
-    const SENHA_ADMIN  = 'eleve2026';  // ← troque aqui
-    const STORAGE_KEY  = 'eleve_agendamentos';
-    const HORARIOS_DIA = ['09:00','10:00','11:00','12:00','14:00','15:00','16:00','17:00','18:00'];
-    const MESES        = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
 
-    /* ── ESTADO ── */
-    let agendamentos      = [];
-    let servicoAtual      = '';
-    let dataSelecionada   = '';
+    /* ─── CONFIG ─── */
+    const SENHA_ADMIN   = 'eleve2026';       // ← troque aqui
+    const STORAGE_KEY   = 'eleve_agenda';    // chave no localStorage
+    const MESES         = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho',
+                            'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+    const HORARIOS_DIA  = ['09:00','10:00','11:00','12:00','14:00','15:00','16:00','17:00','18:00'];
+
+    /* ─── ESTADO ─── */
+    let agendamentos       = [];
+    let servicoAtual       = '';
+    let dataSelecionada    = '';
     let horarioSelecionado = '';
-    let dataAtual         = new Date();
+    let mesAtual           = new Date();
 
-    /* ── PERSISTÊNCIA ── */
-    function carregarAgendamentos() {
+    /* ─── PERSISTÊNCIA (igual ao Horário Espiritual) ─── */
+    function salvar() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(agendamentos));
+    }
+
+    function carregar() {
       try {
         const raw = localStorage.getItem(STORAGE_KEY);
         agendamentos = raw ? JSON.parse(raw) : [];
-      } catch(e) { agendamentos = []; }
-    }
-
-    function salvarAgendamentos() {
-      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(agendamentos)); } catch(e) {}
+      } catch(e) {
+        agendamentos = [];
+      }
     }
 
     function horariosOcupados(dataStr) {
@@ -508,13 +543,13 @@
         .map(a => a.horario);
     }
 
-    /* ── MODAL AGENDAMENTO ── */
+    /* ─── MODAL AGENDAMENTO ─── */
     function abrirAgenda(servico) {
-      carregarAgendamentos();
-      servicoAtual = servico;
-      dataSelecionada = '';
+      carregar();
+      servicoAtual       = servico;
+      dataSelecionada    = '';
       horarioSelecionado = '';
-      dataAtual = new Date();
+      mesAtual           = new Date();
 
       document.getElementById('tituloServico').textContent = 'Agendar: ' + servico;
       document.getElementById('nomeCliente').value = '';
@@ -522,7 +557,6 @@
       document.getElementById('msgModal').className = 'msg-modal';
       document.getElementById('horarios').innerHTML = '';
       document.getElementById('modalAgendamento').style.display = 'flex';
-
       gerarCalendario();
     }
 
@@ -530,21 +564,23 @@
       document.getElementById('modalAgendamento').style.display = 'none';
     }
 
-    /* ── CALENDÁRIO ── */
+    /* ─── CALENDÁRIO ─── */
     function gerarCalendario() {
-      const cal  = document.getElementById('calendario');
+      const cal = document.getElementById('calendario');
       cal.innerHTML = '';
 
-      const ano  = dataAtual.getFullYear();
-      const mes  = dataAtual.getMonth();
+      const ano = mesAtual.getFullYear();
+      const mes = mesAtual.getMonth();
       document.getElementById('mesAnoTitulo').textContent = `${MESES[mes]} ${ano}`;
 
-      const primeiroDia   = new Date(ano, mes, 1).getDay();
-      const totalDias     = new Date(ano, mes + 1, 0).getDate();
-      const hoje = new Date(); hoje.setHours(0,0,0,0);
+      const primeiroDia = new Date(ano, mes, 1).getDay();
+      const totalDias   = new Date(ano, mes + 1, 0).getDate();
+      const hoje        = new Date(); hoje.setHours(0,0,0,0);
 
       for (let i = 0; i < primeiroDia; i++) {
-        const d = document.createElement('div'); d.className = 'dia dia-vazio'; cal.appendChild(d);
+        const d = document.createElement('div');
+        d.className = 'dia dia-vazio';
+        cal.appendChild(d);
       }
 
       for (let dia = 1; dia <= totalDias; dia++) {
@@ -557,15 +593,15 @@
           div.className = 'dia indisponivel';
         } else {
           div.className = 'dia disponivel' + (str === dataSelecionada ? ' selecionado' : '');
-          div.onclick = () => selecionarData(str, div);
+          div.onclick   = () => selecionarData(str, div);
         }
         cal.appendChild(div);
       }
     }
 
     function mudarMes(dir) {
-      dataAtual.setMonth(dataAtual.getMonth() + dir);
-      dataSelecionada = '';
+      mesAtual.setMonth(mesAtual.getMonth() + dir);
+      dataSelecionada    = '';
       horarioSelecionado = '';
       document.getElementById('horarios').innerHTML = '';
       document.getElementById('btnConfirmar').disabled = true;
@@ -583,8 +619,8 @@
     }
 
     function renderHorarios() {
-      const div     = document.getElementById('horarios');
-      div.innerHTML = '';
+      const div      = document.getElementById('horarios');
+      div.innerHTML  = '';
       const ocupados = horariosOcupados(dataSelecionada);
 
       HORARIOS_DIA.forEach(h => {
@@ -592,6 +628,7 @@
         btn.textContent = h;
 
         if (ocupados.includes(h)) {
+          /* ── VERMELHO E BLOQUEADO ── */
           btn.className = 'horario-ocupado';
           btn.disabled  = true;
           btn.title     = 'Horário já agendado';
@@ -626,80 +663,88 @@
         return;
       }
 
-      /* dupla verificação de conflito */
-      carregarAgendamentos();
+      /* dupla verificação de conflito antes de salvar */
+      carregar();
       if (horariosOcupados(dataSelecionada).includes(horarioSelecionado)) {
-        msg.textContent = 'Este horário acabou de ser ocupado. Escolha outro.';
+        msg.textContent = 'Este horário acabou de ser ocupado. Por favor, escolha outro.';
         msg.className   = 'msg-modal msg-err';
-        renderHorarios();
         horarioSelecionado = '';
         document.getElementById('btnConfirmar').disabled = true;
+        renderHorarios();
         return;
       }
 
+      /* salva o novo agendamento */
       const novo = {
-        id:       Date.now().toString(),
-        data:     dataSelecionada,
-        horario:  horarioSelecionado,
-        cliente:  nome,
-        servico:  servicoAtual,
-        status:   'agendado',
-        criadoEm: new Date().toISOString()
+        id:        Date.now().toString(),
+        data:      dataSelecionada,
+        horario:   horarioSelecionado,
+        cliente:   nome,
+        servico:   servicoAtual,
+        status:    'agendado',
+        criadoEm:  new Date().toISOString()
       };
       agendamentos.push(novo);
-      salvarAgendamentos();
+      salvar();
 
+      /* monta mensagem de confirmação + link WhatsApp */
       const [ano, m, dia] = dataSelecionada.split('-');
-      const dfmt = `${dia}/${m}/${ano}`;
-      const wppMsg = encodeURIComponent(
-        `Olá, gostaria de confirmar meu agendamento:\n\nNome: ${nome}\nServiço: ${servicoAtual}\nData: ${dfmt}\nHorário: ${horarioSelecionado}`
+      const dfmt    = `${dia}/${m}/${ano}`;
+      const wppTxt  = encodeURIComponent(
+        `Olá Carol, gostaria de confirmar meu agendamento:\n\nNome: ${nome}\nServiço: ${servicoAtual}\nData: ${dfmt}\nHorário: ${horarioSelecionado}`
       );
 
-      msg.innerHTML = `✓ Agendado com sucesso!<br><strong>${nome}</strong> — ${servicoAtual}<br>📅 ${dfmt} às ${horarioSelecionado}<br>
-        <a class="wpp-link" href="https://wa.me/5511997837119?text=${wppMsg}" target="_blank">
+      msg.innerHTML = `✅ Agendado com sucesso!<br>
+        <strong>${nome}</strong> — ${servicoAtual}<br>
+        📅 ${dfmt} às ${horarioSelecionado}<br>
+        <a class="wpp-link" href="https://wa.me/5511997837119?text=${wppTxt}" target="_blank">
           <i class="fab fa-whatsapp"></i> Confirmar no WhatsApp
         </a>`;
       msg.className = 'msg-modal msg-ok';
 
       document.getElementById('btnConfirmar').disabled = true;
       horarioSelecionado = '';
-      renderHorarios();
+      renderHorarios(); /* atualiza vermelho imediatamente */
     }
 
-    /* ── ADMIN ── */
-    function abrirAdmin() {
-      carregarAgendamentos();
-      document.getElementById('adminOverlay').style.display = 'flex';
-      document.getElementById('adminLoginWrap').style.display = 'block';
-      document.getElementById('adminPainel').style.display   = 'none';
+    /* ─── ADMIN — LOGIN (igual ao Horário Espiritual) ─── */
+    function abrirLoginAdmin() {
+      document.getElementById('adminLoginModal').style.display = 'flex';
       document.getElementById('senhaAdmin').value = '';
       document.getElementById('erroLogin').style.display = 'none';
+      setTimeout(() => document.getElementById('senhaAdmin').focus(), 100);
     }
 
-    function fecharAdmin() {
-      document.getElementById('adminOverlay').style.display = 'none';
+    function fecharLoginAdmin() {
+      document.getElementById('adminLoginModal').style.display = 'none';
     }
 
     function loginAdmin() {
       const senha = document.getElementById('senhaAdmin').value;
       if (senha === SENHA_ADMIN) {
-        document.getElementById('adminLoginWrap').style.display = 'none';
-        document.getElementById('adminPainel').style.display   = 'block';
+        fecharLoginAdmin();
+        carregar();
         popularFiltroMes();
         renderAdmin();
+        document.getElementById('adminPainel').style.display = 'block';
       } else {
         document.getElementById('erroLogin').style.display = 'block';
       }
     }
 
+    function fecharAdmin() {
+      document.getElementById('adminPainel').style.display = 'none';
+    }
+
+    /* ─── ADMIN — PAINEL ─── */
     function popularFiltroMes() {
       const sel = document.getElementById('filtroMes');
       sel.innerHTML = '<option value="">Todos os meses</option>';
-      const mesSet = [...new Set(agendamentos.map(a => a.data.substring(0,7)))].sort().reverse();
-      mesSet.forEach(m => {
-        const [ano, mm] = m.split('-');
+      const usados = [...new Set(agendamentos.map(a => a.data.substring(0,7)))].sort().reverse();
+      usados.forEach(ym => {
+        const [ano, mm] = ym.split('-');
         const opt = document.createElement('option');
-        opt.value = m;
+        opt.value       = ym;
         opt.textContent = `${MESES[parseInt(mm)-1]} ${ano}`;
         sel.appendChild(opt);
       });
@@ -716,8 +761,9 @@
       if (filtMes)    lista = lista.filter(a => a.data.startsWith(filtMes));
       if (filtStatus) lista = lista.filter(a => a.status === filtStatus);
 
-      const total     = lista.length;
-      const ativos    = lista.filter(a => a.status === 'agendado').length;
+      /* resumo */
+      const total      = lista.length;
+      const ativos     = lista.filter(a => a.status === 'agendado').length;
       const cancelados = lista.filter(a => a.status === 'cancelado').length;
 
       document.getElementById('resumoCards').innerHTML = `
@@ -730,18 +776,18 @@
       const empty = document.getElementById('emptyAdmin');
 
       if (!lista.length) {
-        tbody.innerHTML = '';
-        empty.style.display = 'block';
+        tbody.innerHTML       = '';
+        empty.style.display   = 'block';
         return;
       }
       empty.style.display = 'none';
       tbody.innerHTML = lista.map(a => {
         const [ano,m,d] = a.data.split('-');
-        const dfmt = `${d}/${m}/${ano}`;
+        const dfmt  = `${d}/${m}/${ano}`;
         const badge = a.status === 'agendado'
           ? '<span class="badge badge-ag">Agendado</span>'
           : '<span class="badge badge-can">Cancelado</span>';
-        const btn = a.status === 'agendado'
+        const botao = a.status === 'agendado'
           ? `<button class="btn-cancelar" onclick="cancelarAg('${a.id}')">Cancelar</button>`
           : '';
         return `<tr>
@@ -750,38 +796,40 @@
           <td>${a.cliente}</td>
           <td style="font-size:12px;max-width:180px;">${a.servico}</td>
           <td>${badge}</td>
-          <td>${btn}</td>
+          <td>${botao}</td>
         </tr>`;
       }).join('');
     }
 
     function cancelarAg(id) {
+      carregar();
       const idx = agendamentos.findIndex(a => a.id === id);
       if (idx === -1) return;
       agendamentos[idx].status = 'cancelado';
-      salvarAgendamentos();
+      salvar();
       renderAdmin();
+      /* se modal estiver aberto, atualiza horários */
       if (dataSelecionada) renderHorarios();
     }
 
     function limparTudo() {
-      if (!confirm('Apagar TODOS os agendamentos? Essa ação não pode ser desfeita.')) return;
+      if (!confirm('Apagar TODOS os agendamentos?\nEssa ação não pode ser desfeita.')) return;
       agendamentos = [];
-      salvarAgendamentos();
+      salvar();
       renderAdmin();
-      if (dataSelecionada) renderHorarios();
     }
 
-    /* ── FECHAR COM CLIQUE FORA ── */
+    /* ─── FECHAR COM CLIQUE FORA ─── */
     document.getElementById('modalAgendamento').addEventListener('click', e => {
-      if (e.target === document.getElementById('modalAgendamento')) fecharModal();
+      if (e.target.id === 'modalAgendamento') fecharModal();
     });
-    document.getElementById('adminOverlay').addEventListener('click', e => {
-      if (e.target === document.getElementById('adminOverlay')) fecharAdmin();
+    document.getElementById('adminLoginModal').addEventListener('click', e => {
+      if (e.target.id === 'adminLoginModal') fecharLoginAdmin();
     });
 
-    /* ── INIT ── */
-    carregarAgendamentos();
+    /* ─── INIT ─── */
+    carregar();
+
   </script>
 
 </body>
