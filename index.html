@@ -46,10 +46,10 @@
         /* LOGO REDONDA NO HEADER */
         .logo-header {
             height: 50px;
-            width: 50px; /* Largura igual à altura para ficar redonda */
-            border-radius: 50%; /* Faz o corte redondo */
-            object-fit: cover; /* Garante que a imagem não distorça */
-            border: 2px solid #d4b07b; /* Opcional: bordinha dourada para destacar */
+            width: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #d4b07b;
             display: block;
         }
 
@@ -72,7 +72,7 @@
 
         .btn {
             background: #d4b07b;
-            color: #0c160f; /* Verde escuro */
+            color: #0c160f;
             padding: 12px 22px;
             border-radius: 10px;
             text-decoration: none;
@@ -97,14 +97,14 @@
             max-width: 800px;
         }
 
-        /* LOGO REDONDA NO HERO (INÍCIO) */
+        /* LOGO REDONDA NO HERO */
         .logo-hero {
-            width: 180px; /* Tamanho ideal para o centro da tela */
+            width: 180px;
             height: 180px;
-            border-radius: 50%; /* Torna redonda */
+            border-radius: 50%;
             object-fit: cover;
             margin-bottom: 25px;
-            border: 3px solid #d4b07b; /* Bordinha dourada combinando com o tema */
+            border: 3px solid #d4b07b;
             display: block;
         }
 
@@ -142,7 +142,7 @@
         }
 
         .card {
-            background: rgba(24, 40, 30, 0.85); /* Verde fechado nos cards */
+            background: rgba(24, 40, 30, 0.85);
             padding: 25px 20px;
             border-radius: 15px;
             border: 1px solid rgba(244, 244, 240, 0.08);
@@ -259,7 +259,7 @@
         }
 
         .modal-conteudo {
-            background: #142319; /* Verde interno */
+            background: #142319;
             width: 440px;
             max-width: 92%;
             padding: 25px;
@@ -338,7 +338,7 @@
         }
 
         .disponivel {
-            background: #2E5A36; /* Verde folha fechado */
+            background: #2E5A36;
             color: #f4f4f0;
         }
 
@@ -385,13 +385,20 @@
             color: #a0a8a2;
         }
 
-        .whats {
+        /* CONTAINER DE ÍCONES FLUTUANTES (WPP + INSTA) */
+        .social-container {
             position: fixed;
             right: 20px;
             bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 998;
+        }
+
+        .social-btn {
             width: 65px;
             height: 65px;
-            background: #25d366;
             border-radius: 50%;
             display: flex;
             justify-content: center;
@@ -399,8 +406,18 @@
             font-size: 32px;
             color: #fff;
             text-decoration: none;
-            z-index: 998;
             transition: .3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .social-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .whats { background: #25d366; }
+        
+        .insta { 
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
         }
 
         /* INTERFACE RESPONSIVA CELULAR */
@@ -414,7 +431,7 @@
             }
             nav { gap: 12px; }
             nav a { font-size: 13px; }
-            header .btn { display: none; } /* Mantém foco na logo redonda no mobile */
+            header .btn { display: none; }
             
             .logo-hero { 
                 width: 140px; 
@@ -424,7 +441,6 @@
             .hero p { font-size: 18px; }
             section { padding: 50px 5%; }
 
-            /* MÓDULOS LADO A LADO NO MOBILE */
             .cards {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
@@ -448,7 +464,6 @@
 
     <header>
         <div class="logo">
-            <!-- Logo redonda no cabeçalho -->
             <img src="image_2.png" alt="ELEVE Studio Barber" class="logo-header">
         </div>
         <nav>
@@ -462,7 +477,6 @@
 
     <section id="inicio" class="hero">
         <div class="hero-content">
-            <!-- Logo redonda de destaque no centro do Hero -->
             <img src="image_2.png" alt="ELEVE Logo" class="logo-hero">
             <h2>MAIS QUE UM CORTE, UMA EXPERIÊNCIA</h2>
             <p>Eleve seu estilo. Eleve sua confiança.</p>
@@ -616,7 +630,7 @@
             </div>
             <div class="linha">
                 <span>Sábado</span>
-                <strong>09h às 18h</strong>
+                <strong>10h às 18h</strong>
             </div>
             <div class="linha">
                 <span>Domingo</span>
@@ -630,9 +644,17 @@
         <p>© ELEVE Studio Barber</p>
     </footer>
 
-    <a class="whats" href="https://wa.me/5511997837119" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <!-- CONTAINER SOCIAL FIXO FLUTUANTE -->
+    <div class="social-container">
+        <!-- WhatsApp -->
+        <a class="social-btn whats" href="https://wa.me/5511997837119" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <!-- Instagram -->
+        <a class="social-btn insta" href="https://www.instagram.com/_carolabarber/" target="_blank">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
 
     <script>
         const agenda = {
