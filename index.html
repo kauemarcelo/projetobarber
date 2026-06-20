@@ -1,3 +1,10 @@
+Com certeza! Adicionar o link direto para o Google Maps facilita muito a vida do cliente que está indo até o estúdio pelo celular.
+
+Para fazer isso de forma limpa, transformei todo o bloco do endereço em um link clicável e adicionei o ícone clássico de pin de localização (`fas fa-map-marker-alt`) do FontAwesome logo ao lado.
+
+Aqui está o código completo e atualizado com essa melhoria:
+
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -242,6 +249,27 @@
             justify-content: space-between;
             padding: 15px 0;
             border-bottom: 1px solid rgba(244, 244, 240, 0.08);
+            align-items: center;
+        }
+
+        /* LINK DO MAPS */
+        .link-maps {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: 0.3s;
+            text-align: right;
+        }
+
+        .link-maps:hover {
+            color: #d4b07b;
+        }
+
+        .link-maps i {
+            font-size: 20px;
+            color: #d4b07b;
         }
 
         /* MODAL E AGENDA */
@@ -455,7 +483,8 @@
             .card small { font-size: 11px; margin-bottom: 10px; }
             .card a { padding: 8px 10px; font-size: 12px; border-radius: 6px; }
 
-            .linha { flex-direction: column; gap: 5px; text-align: center; }
+            .linha { flex-direction: column; gap: 8px; text-align: center; }
+            .link-maps { text-align: center; flex-direction: column; gap: 4px; }
         }
     </style>
 </head>
@@ -618,7 +647,11 @@
         <div class="horario">
             <div class="linha">
                 <span>Endereço</span>
-                <strong>Rua Brigadeiro Henrique Fontenelle, 464<br>Parque São Domingos - São Paulo/SP</strong>
+                <!-- Todo o endereço virou um link com ícone do Maps -->
+                <a class="link-maps" href="https://maps.google.com/?q=Rua+Brigadeiro+Henrique+Fontenelle,+464,+Parque+São+Domingos,+São+Paulo" target="_blank">
+                    <strong>Rua Brigadeiro Henrique Fontenelle, 464<br>Parque São Domingos - São Paulo/SP</strong>
+                    <i class="fas fa-map-marker-alt"></i>
+                </a>
             </div>
             <div class="linha">
                 <span>Terça a Quinta</span>
@@ -777,3 +810,5 @@
 </body>
 
 </html>
+
+```
