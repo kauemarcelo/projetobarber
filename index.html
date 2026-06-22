@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -20,27 +19,53 @@
             scroll-behavior: smooth;
         }
 
-        /* PALETA DE CORES: VERDE FECHADO & OFF-WHITE */
+        /* CAMADA DE FUNDO FIXA — foto fica visível com vida própria */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background: url('image.png') center center / cover no-repeat;
+        }
+
+        /* OVERLAY MÍNIMO — só vinheta nas bordas, centro quase limpo */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at center, rgba(8, 16, 10, 0.08) 0%, rgba(8, 16, 10, 0.48) 100%);
+        }
+
         body {
-            background: linear-gradient(rgba(20, 35, 25, 0.85), rgba(12, 22, 15, 0.90)), url('image.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            color: #f4f4f0; /* Off-White */
+            color: #f4f4f0;
+            /* garante que o fundo não compita com o pseudo-element */
+            background: transparent;
+        }
+
+        /* Seções com blur mínimo — foto fica nítida ao fundo */
+        section,
+        .sobre-container,
+        .horario,
+        .modal-conteudo,
+        .card {
+            backdrop-filter: blur(1px) brightness(0.88);
+            -webkit-backdrop-filter: blur(1px) brightness(0.88);
         }
 
         /* HEADER */
         header {
             position: sticky;
             top: 0;
-            background: rgba(12, 22, 15, 0.92);
-            backdrop-filter: blur(10px);
+            background: rgba(8, 16, 10, 0.78);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             padding: 12px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(244, 244, 240, 0.08);
+            border-bottom: 1px solid rgba(212, 176, 123, 0.18);
             z-index: 999;
         }
 
@@ -107,6 +132,8 @@
             margin-bottom: 25px;
             border: 3px solid #d4b07b;
             display: block;
+            /* sombra dourada sutil para destacar da foto */
+            box-shadow: 0 0 40px rgba(212, 176, 123, 0.22);
         }
 
         .hero h2 {
@@ -114,12 +141,15 @@
             font-size: 20px;
             letter-spacing: 2px;
             margin-bottom: 10px;
+            /* leve sombra de texto para legibilidade mesmo com foto mais visível */
+            text-shadow: 0 2px 12px rgba(0,0,0,0.6);
         }
 
         .hero p {
             font-size: 24px;
             margin-bottom: 30px;
             color: #f4f4f0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.55);
         }
 
         /* SEÇÕES */
@@ -132,9 +162,10 @@
             font-size: 38px;
             margin-bottom: 50px;
             color: #d4b07b;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.5);
         }
 
-        /* CARDS / MÓDULOS (LADO A LADO NO CELULAR) */
+        /* CARDS */
         .cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -143,13 +174,12 @@
         }
 
         .card {
-            background: rgba(24, 40, 30, 0.85);
+            background: rgba(18, 32, 22, 0.72);
             padding: 25px 20px;
             border-radius: 15px;
-            border: 1px solid rgba(244, 244, 240, 0.08);
+            border: 1px solid rgba(212, 176, 123, 0.14);
             text-align: center;
             transition: .3s;
-            backdrop-filter: blur(6px);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -157,6 +187,8 @@
 
         .card:hover {
             transform: translateY(-5px);
+            background: rgba(18, 32, 22, 0.82);
+            border-color: rgba(212, 176, 123, 0.32);
         }
 
         .card i {
@@ -207,11 +239,10 @@
             max-width: 800px;
             margin: auto;
             text-align: center;
-            background: rgba(24, 40, 30, 0.85);
+            background: rgba(18, 32, 22, 0.72);
             padding: 40px 20px;
             border-radius: 20px;
-            backdrop-filter: blur(6px);
-            border: 1px solid rgba(244, 244, 240, 0.08);
+            border: 1px solid rgba(212, 176, 123, 0.14);
         }
 
         .sobre-container img {
@@ -232,10 +263,10 @@
         .horario {
             max-width: 800px;
             margin: auto;
-            background: rgba(24, 40, 30, 0.85);
+            background: rgba(18, 32, 22, 0.72);
             padding: 30px;
             border-radius: 20px;
-            border: 1px solid rgba(244, 244, 240, 0.08);
+            border: 1px solid rgba(212, 176, 123, 0.14);
         }
 
         .linha {
@@ -274,14 +305,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(12, 22, 15, 0.95);
+            background: rgba(8, 16, 10, 0.88);
             z-index: 9999;
             justify-content: center;
             align-items: center;
         }
 
         .modal-conteudo {
-            background: #142319;
+            background: rgba(18, 35, 24, 0.97);
             width: 440px;
             max-width: 92%;
             padding: 25px;
@@ -613,10 +644,9 @@
         </div>
     </section>
 
-    <!-- MODAL AGENDAMENTO -->
     <div id="modalAgendamento" class="modal">
         <div class="modal-conteudo">
-            <span class="fechar">&times;</span>
+            <span class="fechar">×</span>
             <h2 id="tituloServico" style="color: #d4b07b;">Agendar Serviço</h2>
             
             <div class="calendario-header">
@@ -641,8 +671,7 @@
         <div class="horario">
             <div class="linha">
                 <span>Endereço</span>
-                <!-- Todo o endereço virou um link com ícone do Maps -->
-                <a class="link-maps" href="https://maps.google.com/?q=Rua+Brigadeiro+Henrique+Fontenelle,+464,+Parque+São+Domingos,+São+Paulo" target="_blank">
+                <a class="link-maps" href="https://maps.google.com/?q=Rua+Brigadeiro+Henrique+Fontenelle,+464+Parque+Sao+Domingos+Sao+Paulo" target="_blank">
                     <strong>Rua Brigadeiro Henrique Fontenelle, 464<br>Parque São Domingos - São Paulo/SP</strong>
                     <i class="fas fa-map-marker-alt"></i>
                 </a>
@@ -657,7 +686,7 @@
             </div>
             <div class="linha">
                 <span>Sábado</span>
-                <strong>09h às 18h</strong>
+                <strong>10h às 18h</strong>
             </div>
             <div class="linha">
                 <span>Domingo</span>
@@ -671,13 +700,10 @@
         <p>© ELEVE Studio Barber</p>
     </footer>
 
-    <!-- CONTAINER SOCIAL FIXO FLUTUANTE -->
     <div class="social-container">
-        <!-- WhatsApp -->
         <a class="social-btn whats" href="https://wa.me/5511997837119" target="_blank">
             <i class="fab fa-whatsapp"></i>
         </a>
-        <!-- Instagram -->
         <a class="social-btn insta" href="https://www.instagram.com/_carolabarber/" target="_blank">
             <i class="fab fa-instagram"></i>
         </a>
@@ -804,5 +830,3 @@
 </body>
 
 </html>
-
-```
